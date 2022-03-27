@@ -6,11 +6,11 @@ const validatorHandler = require("../middlewares/validator.handler");
 const { createUserSchema } = require("../schemas/user.schema");
 
 const router = express.Router();
-const service = new UserService();
+const userService = new UserService();
 
 router.get("/", async (req, res, next) => {
   try {
-    const users = await service.findAll();
+    const users = await userService.findAll();
     res.json(users);
   } catch (error) {
     next(error);
@@ -23,7 +23,7 @@ router.post(
   validatorHandler(createUserSchema, "body"),
   async (req, res, next) => {
     try {
-      const users = await service.create(req.body);
+      const users = await userService.create(req.body);
       res.json(users);
     } catch (error) {
       next(error);
