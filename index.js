@@ -10,6 +10,8 @@ const {
 const app = express();
 app.use(express.json());
 
+require("./utils/auth");
+
 routerApi(app);
 
 app.use(logErrors);
