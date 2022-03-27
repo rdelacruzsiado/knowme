@@ -1,6 +1,7 @@
 const express = require("express");
 
 const UserService = require("../services/user.service");
+const { checkApiKey } = require("../middlewares/auth.handler");
 const validatorHandler = require("../middlewares/validator.handler");
 const { createUserSchema } = require("../schemas/user.schema");
 
@@ -18,6 +19,7 @@ router.get("/", async (req, res, next) => {
 
 router.post(
   "/",
+  checkApiKey,
   validatorHandler(createUserSchema, "body"),
   async (req, res, next) => {
     try {

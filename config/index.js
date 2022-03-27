@@ -3,8 +3,9 @@ require("dotenv").config();
 const config = {
   dev: process.env.NODE_ENV !== "production",
   port: process.env.PORT || 3000,
+  apiKey: process.env.API_KEY,
   timeZone: process.env.TIME_ZONE,
-  showSequelizeLogs: process.env.SHOW_SEQUELIZE_LOGS === 'true',
+  showSequelizeLogs: process.env.SHOW_SEQUELIZE_LOGS === "true",
   dbDialect: process.env.DB_DIALECT || "mysql",
   dbHost: process.env.DB_HOST,
   dbPort: process.env.DB_PORT || 3306,
