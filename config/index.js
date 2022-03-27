@@ -13,6 +13,7 @@ const config = {
   dbUser: process.env.DB_USER,
   dbPassword: process.env.DB_PASSWORD,
   mysqlRootPassword: process.env.MYSQL_ROOT_PASSWORD,
+  jwtSecret: process.env.JWT_SECRET,
 };
 
 module.exports = config;
