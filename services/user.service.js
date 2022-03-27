@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const { models } = require("../libs/sequelize");
 
 class UsersService {
@@ -12,7 +13,13 @@ class UsersService {
   }
 
   async create(data) {
-    const newUser = await models.User.create(data);
+    const passwordHashed = await bcrypt.hash(data.password, 10);
+    const newUser = await models.User.create({
+      ...data,
+      password: passwordHashed,
+    });
+    delete newUser.dataValues.password;
+
     return newUser;
   }
 }
