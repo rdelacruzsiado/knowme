@@ -11,7 +11,7 @@ class PublicationsService {
   async findOne(id) {
     const publication = await models.Publication.findOne({
       where: { id },
-      include: ["photos"],
+      include: ["photos", "comments"],
     });
     return publication;
   }
