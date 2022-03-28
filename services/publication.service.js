@@ -3,7 +3,7 @@ const { models } = require("../libs/sequelize");
 class PublicationsService {
   async findAll() {
     const publications = await models.Publication.findAll({
-      include: ["photos"],
+      include: ["photos", "comments", "likes"],
     });
     return publications;
   }
